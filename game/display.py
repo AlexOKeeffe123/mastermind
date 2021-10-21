@@ -1,3 +1,7 @@
 #Chase
 class display:
-    pass
+    """
+    """
+
+    def __init__(self):
+        pass
