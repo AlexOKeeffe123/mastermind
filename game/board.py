@@ -52,7 +52,7 @@ class Board:
             name = player.get_name()
             code = str(random.randint(10 ** (self._solutionLength - 1), 10 ** self._solutionLength))
 
-            """
+            
             name = player.get_name()
             code = str(random.randint(1000, 10000))
             
@@ -65,8 +65,8 @@ class Board:
             guess (string): The guess that was made.
 
         Returns:
-            string: A hint in the form [xxxx]
-        """ 
+            string: A hint in the form [xxxx]"""
+        
         hint = ""
         for index, letter in enumerate(guess):
             if code[index] == letter:
@@ -78,13 +78,13 @@ class Board:
         return hint
 
     def get_solution(self, name):
-        """ Gets solution
+        """Gets solution
 
         Args:
             self (Board): An instance of Board.
-
+       
         Return:
             name (String): gets player's name
-            integer (Int): gets code
-        """
+            integer (Int): gets code"""
+        
         return self._items[name][0]
