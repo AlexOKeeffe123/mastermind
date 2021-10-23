@@ -65,14 +65,14 @@ class Director:
     def _get_inputs(self):
         """Gets the inputs at the beginning of each round of play. In this case,
         that means getting the turn from the current player.
-        
+
         Args:
             self (Director): An instance of Director.
         """
         player = self._roster.get_current()
         self._display.write(f"{player.get_name()}'s turn:")
         guess = self._display.read_int("What is your guess? ")
-        turn = Turn(guess)
+        turn = Turn(guess, player.get_name())
         player.set_turn(turn)
 
     def _do_updates(self): 
@@ -94,7 +94,7 @@ class Director:
             self (Director): An instance of Director.
         """
         lastTurn = self._roster.get_current().get_turn()
-        if lastTurn == self._board.get_solution():
+        if lastTurn == self._board.get_solution(lastTurn.get_guesser_name()):
             winner = self._roster.get_current()
             name = winner.get_name()
             print(f"\n{name} won!")
