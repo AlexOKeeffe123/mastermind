@@ -54,7 +54,7 @@ class Director:
             self (Director): An instance of Director.
         """
         self._numPlayers = self._display.read_int("How many players are there? ")
-        secretLength = self._display.read("How long would you like the Secret Code to be? ")
+        secretLength = self._display.read_int("How long would you like the Secret Code to be? ")
         self._board = Board(secretLength)
         for p in range(self._numPlayers):
             name = self._display.read(f"Enter a name for player {p + 1}: ")
@@ -71,7 +71,7 @@ class Director:
         """
         player = self._roster.get_current()
         self._display.write(f"{player.get_name()}'s turn:")
-        guess = self._display.read_int("What is your guess? ")
+        guess = self._display.read("What is your guess? ")
         turn = Turn(guess, player.get_name())
         player.set_turn(turn)
 
@@ -94,9 +94,9 @@ class Director:
             self (Director): An instance of Director.
         """
         lastTurn = self._roster.get_current().get_turn()
-        if lastTurn == self._board.get_solution(lastTurn.get_guesser_name()):
+        if lastTurn.get_guess() == self._board.get_solution(lastTurn.get_guesser_name()):
             winner = self._roster.get_current()
             name = winner.get_name()
-            print(f"\n{name} won!")
+            self._display.write(f"\n{name} won!")
             self._isRunning = False
         self._roster.next_player()

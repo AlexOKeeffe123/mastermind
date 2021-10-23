@@ -22,11 +22,11 @@ class Board:
         Returns:
             string: A representation of the current board.
         """
-        lines = "\n--------------"
-        for i, (name, values) in enumerate(self._items):
-            "Player {name}: ----, ****"
-            lines += f"Player {name}: {values[1]}, {values[2]}"
-        lines += "\n--------------"
+        lines = "\n--------------\n"
+        for name, values in self._items.items():
+            # "Player {name}: ----, ****"
+            lines += f"Player {name}: {values[1]}, {values[2]}\n"
+        lines += "--------------"
         return lines
 
 
@@ -50,12 +50,12 @@ class Board:
                 player (string): gets player's values
             """
             name = player.get_name()
-            code = str(random.randint(10 ** (int(self._solutionLength) - 1), 10 ** int(self._solutionLength)))
-
-
-            
-            name = player.get_name()
-            code = str(random.randint(1000, 10000))
+            code = str(random.randint(10 ** (self._solutionLength - 1), 10 ** self._solutionLength))
+            guess = hint = ""
+            for char in range(self._solutionLength):
+                 guess += "-"
+                 hint += "*"
+            self._items[name] = [code, guess, hint]
             
     def _create_hint(self, code, guess):
         """Generates a hint based on the given code and guess.
