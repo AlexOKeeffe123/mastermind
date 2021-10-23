@@ -1,13 +1,44 @@
 #Chase
 class Display:
-    def __init__(self):
-        pass
+    """The class constructor
 
-    def read_int(self, textPrompt): #returns an integer
-        pass
+	Attributes:
+        textPrompt (String): The prompt to display string lines
+        textPrompt (String): Displays what gets passed in
+	"""
 
-    def read(self, textPrompt): #returns whatever input is read in
-        pass
+    def read_int(self, textPrompt):
+        """ Returns an integer
 
-    def write(self, textToPrint): #prints what is passed in
-        pass
+        Args:
+            self (Display): an instance of Display
+
+        Returns:
+            int: Value representing the integer for prompt
+        """
+        return int(input(textPrompt))
+
+
+    def read(self, textPrompt):
+        """ Returns whatever input is read in
+
+        Args:
+            self (Display): an instance of Display
+
+        Returns:
+            int: Value representing string the for prompt
+        """ 
+        return input(textPrompt)
+
+
+
+    def write(self, textToPrint):
+        """ Prints what is passed in
+
+        Args:
+            self (Display): an instance of Display
+
+        Print:
+            texttoPrint (String): Display of what gets passed in
+        """ 
+        print(textToPrint)
