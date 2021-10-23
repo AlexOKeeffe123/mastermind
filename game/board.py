@@ -1,38 +1,48 @@
 import random
 
 #Chase
-class board:
-    """
-    """
+class Board:
+    def __init__(self, length = 4):
+        self._items = {} # this is an empty dictionary
+        self._solutionLength = length
 
-    def __int__(self):
-        """
-        """
-        self.prepare()
-        self.attempt = []
-        self.guessmove = []
+    def to_string(self):
+        pass
 
+    def prepare(self, player):
+            """Sets up the board with an entry for each player.
+            
+            Args:
+                self (Board): an instance of Board.
+            """
+            name = player.get_name()
+            code = str(random.randint(1000, 10000))
+            guess = hint = ""
+            for char in range(self._solutionLength):
+                guess += "-"
+                hint += "*"
+            self._items[name] = [code, guess, hint]
+            
+    def _create_hint(self, code, guess):
+        """Generates a hint based on the given code and guess.
 
-    def getguess(self, correct, guess):
-        """
-        """
-        guessoutput = [''] * len(correct)
+        Args:
+            self (Board): An instance of Board.
+            code (string): The code to compare with.
+            guess (string): The guess that was made.
 
-        for i, (correctnum, guessnum) in enumerate(self.correct, guess):
-            guessoutput[i] = "X"
-            if guessnum == correctnum:
-                print(guessoutput)
+        Returns:
+            string: A hint in the form [xxxx]
+        """ 
+        hint = ""
+        for index, letter in enumerate(guess):
+            if code[index] == letter:
+                hint += "x"
+            elif letter in code:
+                hint += "o"
             else:
-                print('0')
-            return ''.join(guessoutput)
+                hint += "*"
+        return hint
 
-
-    def _prepare(self):
-        """ Sets up the board with a random number
-        """
-        attempt = random.randint(0,3)
-        for n in range(attempt):
-            guessmove = random.randint(1, 9)
-            self.attempt.append(guessmove)
-        return attempt
-
+    def get_solution(self):
+        pass
