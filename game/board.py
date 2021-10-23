@@ -42,7 +42,6 @@ class Board:
         values[1] = turn.get_guess()
         values[2] = self._create_hint(values[0], values[1])
 
-
     def prepare(self, player):
             """Sets up the board with an entry for each player.
             
@@ -52,13 +51,11 @@ class Board:
             """
             name = player.get_name()
             code = str(random.randint(10 ** (self._solutionLength - 1), 10 ** self._solutionLength))
-            guess = hint = ""
-            for char in range(self._solutionLength):
-                guess += "-"
-                hint += "*"
-            self._items[name] = [code, guess, hint]
-            
 
+            """
+            name = player.get_name()
+            code = str(random.randint(1000, 10000))
+            
     def _create_hint(self, code, guess):
         """Generates a hint based on the given code and guess.
 
@@ -79,7 +76,6 @@ class Board:
             else:
                 hint += "*"
         return hint
-
 
     def get_solution(self, name):
         """ Gets solution
