@@ -1,25 +1,44 @@
 #Chase
-class display:
-    """
-    """
+class Display:
+    """The class constructor
 
-    def __init__(self, prompt):
-        """The class constructor. Gets text input.
+	Attributes:
+        textPrompt (String): The prompt to display string lines
+        textPrompt (String): Displays what gets passed in
+	"""
 
-		Args:
-			self (Display): an instance of Display
+    def read_int(self, textPrompt):
+        """ Returns an integer
 
-		"""
-        return input(prompt)
+        Args:
+            self (Display): an instance of Display
 
-
-    def getnum (self, prompt):
+        Returns:
+            int: Value representing the integer for prompt
         """
-        """
-        return int(input(prompt))
+        return int(input(textPrompt))
 
 
-    def gettext (self, text):
-        """
-        """
-        return(text)
+    def read(self, textPrompt):
+        """ Returns whatever input is read in
+
+        Args:
+            self (Display): an instance of Display
+
+        Returns:
+            int: Value representing string the for prompt
+        """ 
+        return input(textPrompt)
+
+
+
+    def write(self, textToPrint):
+        """ Prints what is passed in
+
+        Args:
+            self (Display): an instance of Display
+
+        Print:
+            texttoPrint (String): Display of what gets passed in
+        """ 
+        print(textToPrint)
