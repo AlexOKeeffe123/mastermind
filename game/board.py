@@ -50,7 +50,8 @@ class Board:
                 player (string): gets player's values
             """
             name = player.get_name()
-            code = str(random.randint(10 ** (self._solutionLength - 1), 10 ** self._solutionLength))
+            code = str(random.randint(10 ** (int(self._solutionLength) - 1), 10 ** int(self._solutionLength)))
+
 
             
             name = player.get_name()
