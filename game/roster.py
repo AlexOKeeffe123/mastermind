@@ -1,26 +1,22 @@
 #Alex
 class Roster:
     def __init__(self):
+        #sets the variables that will be used in the Roster class
         self.player_list = []
+        self.current = -1
 
-
-    def add_player(self): 
-            self.player_list.append(self.name)
-            player_count= int(input("How many palyers are playing today? "))
-            for p in player_count:
-                name = input(f"What is player{p+1}'s name? ")
-                self.player_list.append(name)
+    def add_player(self,player): 
+        #takes the player name and adds it to a list
+        self.player_list.append(player)
 
     def get_current(self):
-        count=len(self.player_list)
-        self.current_player_index = 0
-        #Starts the list over again
-        if count == self.current_player_index:
-            self.current_player_index = 0
-        else:
-            self.current_player_index +=1
+        #gets the current player in the list
+        return self.player_list[self.current]
         
-
     def next_player(self):
-        next_play_name = self.player_list[self.current_player_index]
-        return next_play_name
+        count=len(self.player_list)
+        #Starts the list over again
+        if count == self.current:
+            self.current = 0
+        else:
+            self.current +=1
