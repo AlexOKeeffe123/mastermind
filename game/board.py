@@ -1,13 +1,30 @@
 import random
+from typing import Text
 
 #Chase
 class Board:
-    def __init__(self, length = 4):
+    def __init__(self, length):
+        """
+        """
         self._items = {} # this is an empty dictionary
         self._solutionLength = length
 
+
     def to_string(self):
-        pass
+        """
+        """
+        lines = "\n--------------"
+        for i, (name, values) in enumerate(self._items):
+            "Player {name}: ----, ****"
+            lines += f"Player {name}: {values[1]}, {values[2]}"
+        lines += "\n--------------"
+        return lines
+            
+    def apply(self, turn):
+        guesserName = turn.get_guesser_name()
+        values = self._items[guesserName]
+        values[1] = turn.get_guess()
+        values[2] = self._create_hint(values[0], values[1])
 
     def prepare(self, player):
             """Sets up the board with an entry for each player.
@@ -16,13 +33,14 @@ class Board:
                 self (Board): an instance of Board.
             """
             name = player.get_name()
-            code = str(random.randint(1000, 10000))
+            code = str(random.randint(10 ** (self._solutionLength - 1), 10 ** self._solutionLength))
             guess = hint = ""
             for char in range(self._solutionLength):
                 guess += "-"
                 hint += "*"
             self._items[name] = [code, guess, hint]
             
+
     def _create_hint(self, code, guess):
         """Generates a hint based on the given code and guess.
 
@@ -44,5 +62,6 @@ class Board:
                 hint += "*"
         return hint
 
-    def get_solution(self):
-        pass
+
+    def get_solution(self, name):
+        return self._items[name][0]
